@@ -21,7 +21,10 @@ class Departments extends React.Component{
         const department = this.state.departments;
         return(
             <div>
-            {department.map(function(d, idx) {return (<h1>{d.DepartmentName}</h1>)})}            
+            {department.map(function(d, idx) {
+                return (<Department department={d}/>)
+                })
+            }            
             </div>
         );
     }
