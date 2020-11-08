@@ -9,7 +9,7 @@ class Departments extends React.Component{
         };
     }
     componentDidMount(){
-        fetch('http://localhost:51561/api/department')
+        fetch('https://sghtest.azurewebsites.net/api/department')
         .then(res => res.json())
         .then((data) => {
             this.setState({departments: data})

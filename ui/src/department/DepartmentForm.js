@@ -20,8 +20,8 @@ class DepartmentForm extends React.Component{
     }
 
     handlePostData(){
-        fetch('http://localhost:51561/api/department', {
-            method: 'POST',
+        fetch('https://sghtest.azurewebsites.net/api/department', {
+            method: "post",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -31,7 +31,8 @@ class DepartmentForm extends React.Component{
             })
         })
     }
-    render(){return(
+    render(){
+        return(
         <form onSubmit={this.handleSubmit}>
             <label> What is the new department name? </label>
             <input type="text" value={this.state.name} onChange={this.handleChange}></input>
