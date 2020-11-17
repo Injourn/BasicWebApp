@@ -1,2 +1,2 @@
 
-const apiHostName = 'http://localhost:51561';
+//const apiHostName = 'http://localhost:51561';

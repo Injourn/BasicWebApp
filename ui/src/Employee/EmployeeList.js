@@ -13,8 +13,7 @@ class EmployeeList extends React.Component{
         .then(res => res.json())
         .then((data) => {
             this.setState({employee: data})
-        })
-        .catch(console.log);        
+        })        
     }
     render(){
         const employee = this.state.employee;
@@ -31,7 +30,7 @@ class EmployeeList extends React.Component{
                 <tbody>
                     {employee.map(function(d,idx){
                         return(
-                            <EmployeeElement secondary={idx % 2} employee={d}/>
+                            <EmployeeElement key={idx} secondary={idx % 2} employee={d}/>
                         )
                     })}
                 </tbody>

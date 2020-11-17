@@ -16,11 +16,11 @@ class EmployeeForm extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(event){
-        if(event.target.id == "name")
+        if(event.target.id === "name")
             this.setState({name: event.target.value});
-        else if(event.target.id == "department")
+        else if(event.target.id === "department")
             this.setState({department: event.target.value});
-        else if(event.target.id == "date")
+        else if(event.target.id === "date")
             this.setState({date: event.target.value});
         else
             this.setState({picture: event.target.value})
