@@ -12,6 +12,7 @@ class DepartmentForm extends React.Component{
     }
 
     handleChange(event){
+        console.log(event);
         this.setState({name: event.target.value});
     }
 
