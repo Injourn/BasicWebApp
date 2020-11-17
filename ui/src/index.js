@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import Department from './department/Department';
+import EmployeeList from './Employee/EmployeeList';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>  
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

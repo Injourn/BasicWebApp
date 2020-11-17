@@ -23,7 +23,7 @@ class EmployeeForm extends React.Component{
         else if(event.target.id == "date")
             this.setState({date: event.target.value});
         else
-            this.setState({picture: event.state.picture})
+            this.setState({picture: event.target.value})
     }
 
     handleSubmit(event){
@@ -64,7 +64,7 @@ class EmployeeForm extends React.Component{
                 </div>
                 <div className="form-group">
                     <label for="name"> FileName </label>
-                    <input id="FileName" type="text" className="input-control" value={this.state.picture} onChange={this.handleChange}/>
+                    <input id="fileName" type="text" className="input-control" value={this.state.picture} onChange={this.handleChange}/>
                 </div>
                 <div>
                     <button type="submit">Submit</button>

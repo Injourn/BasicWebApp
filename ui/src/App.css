@@ -12,19 +12,20 @@ html{
   background-color: #2D3047;
   overflow: hidden;
 }
-.nav a {
+.nav p {
   float: left;
   color: #f3eee2;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  margin : 0px;
 }
-.nav a:hover {
+.nav p:hover {
   background-color: #F96900;
   color: black;
 }
-.nav a.active {
+.nav p.active {
   background-color: #F96900;
   color: white;
 }
