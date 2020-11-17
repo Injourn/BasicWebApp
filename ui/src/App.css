@@ -1,24 +1,60 @@
+/* Colors:
+Primary background: 848FA5
+Secondary background: 2d3047
+Highligt: F96900
+Alternate Background: f3eee2 */
+
 html{
-  background-color: rgb(247, 246, 255);
+  background-color: #848FA5;
 }
 
 .nav {
-  background-color: #333;
+  background-color: #2D3047;
   overflow: hidden;
 }
 .nav a {
   float: left;
-  color: #f2f2f2;
+  color: #f3eee2;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
 }
 .nav a:hover {
-  background-color: #ddd;
+  background-color: #F96900;
   color: black;
 }
 .nav a.active {
-  background-color: #4CAF50;
+  background-color: #F96900;
   color: white;
+}
+
+
+.simpleTable{
+  margin: 20px 0;
+  table-layout: fixed;
+  width: 100%;
+  padding: 10px;
+  border-collapse: collapse;
+}
+.simpleTable thead{
+  text-align: left;
+  background-color: #2D3047;
+  color:#f3eee2;
+}
+.simpleTable tr{
+  border: solid;
+  border-width: 3px 0;
+  border-color: #2D3047;  
+}
+
+.simpleTable td{
+  padding: 10px;  
+}
+.simpleTable th{
+  padding: 10px;
+}
+.simpleTable tr.altST td{
+  background-color: #f3eee2;
+  color: #2D3047;
 }

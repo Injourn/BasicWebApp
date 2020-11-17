@@ -10,8 +10,7 @@ function App() {
     
     <div className="App">
       <Navbar/>
-      <div>
-        <ExampleComponent name="There"/>
+      <div>        
         <Departments/>
         <DepartmentForm />
       </div>

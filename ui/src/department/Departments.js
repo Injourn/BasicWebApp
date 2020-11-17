@@ -21,10 +21,23 @@ class Departments extends React.Component{
         const department = this.state.departments;
         return(
             <div>
-            {department.map(function(d, idx) {
-                return (<Department department={d}/>)
-                })
-            }            
+                <table className="simpleTable">
+                    <thead>
+                        <tr>
+                            <th style={{width:"10%"}}>Department ID</th>
+                            <th style={{width:"80%"}}>Department Name</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                {department.map(function(d, idx) {
+                    return (                
+                    
+                        <Department secondary={idx % 2} department={d}/>
+                    
+                    )})}   
+                    </tbody>
+                </table>         
             </div>
         );
     }

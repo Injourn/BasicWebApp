@@ -17,11 +17,12 @@ class DepartmentForm extends React.Component{
 
     handleSubmit(event){
         this.handlePostData();
+        event.preventDefault();   
     }
 
     handlePostData(){
         fetch('https://sghtest.azurewebsites.net/api/department', {
-            method: "post",
+            method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -29,7 +30,7 @@ class DepartmentForm extends React.Component{
             body: JSON.stringify({
                 DepartmentName: this.state.name
             })
-        })
+        }).then((response) => {window.location.reload()})
     }
     render(){
         return(
