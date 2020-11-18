@@ -34,18 +34,17 @@ namespace BasicWebApp.Controllers
         public string Post(Department dep) {
 
             try {
-                string query = @"
-                        insert into dbo.Department values
-                        ('" + dep.DepartmentName + @"')
-                        ";
+                string query = "insert into dbo.Department values (@Name)";
                 DataTable table = new DataTable();
 
                 using (var con = new SqlConnection(ConfigurationManager.
                     ConnectionStrings["EmployeeAppDB"].ConnectionString))
-                using (var cmd = new SqlCommand(query, con))
-                using (var da = new SqlDataAdapter(cmd)) {
-                    cmd.CommandType = CommandType.Text;
-                    da.Fill(table);
+                using (var cmd = new SqlCommand(query, con)) {
+                    cmd.Parameters.AddWithValue("@Name", SqlDbType.VarChar).Value = dep.DepartmentName;
+                    using (var da = new SqlDataAdapter(cmd)) {
+                        cmd.CommandType = CommandType.Text;
+                        da.Fill(table);
+                    }
                 }
                 return "Added Successfully!!";
             }
@@ -57,19 +56,18 @@ namespace BasicWebApp.Controllers
         public string Put(Department dep) {
 
             try {
-                string query = @"
-                        update dbo.Department set DepartmentName=
-                        '" + dep.DepartmentName + @"'
-                        where DepartmentId="+dep.DepartmentId + @"
-                        ";
+                string query = @"update dbo.Department set DepartmentName=@Name where DepartmentId=@Id";
                 DataTable table = new DataTable();
 
                 using (var con = new SqlConnection(ConfigurationManager.
                     ConnectionStrings["EmployeeAppDB"].ConnectionString))
-                using (var cmd = new SqlCommand(query, con))
-                using (var da = new SqlDataAdapter(cmd)) {
-                    cmd.CommandType = CommandType.Text;
-                    da.Fill(table);
+                using (var cmd = new SqlCommand(query, con)) {
+                    cmd.Parameters.AddWithValue("@Name", SqlDbType.VarChar).Value = dep.DepartmentName;
+                    cmd.Parameters.AddWithValue("@Id", SqlDbType.Int).Value = dep.DepartmentId;
+                    using (var da = new SqlDataAdapter(cmd)) {
+                        cmd.CommandType = CommandType.Text;
+                        da.Fill(table);
+                    }
                 }
                 return "Updated Successfully!!";
             }
@@ -82,10 +80,7 @@ namespace BasicWebApp.Controllers
         public string Delete(int id) {
 
             try {
-                string query = @"
-                        delete from dbo.Department
-                        where DepartmentId=" + id + @"
-                        ";
+                string query = @"delete from dbo.Department where DepartmentId=" + id;
                 DataTable table = new DataTable();
 
                 using (var con = new SqlConnection(ConfigurationManager.

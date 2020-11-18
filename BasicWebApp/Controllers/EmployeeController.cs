@@ -21,7 +21,7 @@ namespace BasicWebApp.Controllers
                 PhotoFileName from
                 dbo.Employee
                 ";
-            DataTable table = SqlCommand(query);
+            DataTable table = SqlQuery(query);
             
             return Request.CreateResponse(HttpStatusCode.OK, table);
 
@@ -29,15 +29,29 @@ namespace BasicWebApp.Controllers
         public string Post(Employee emp) {
 
             try {
-                string query = @"
+                /*string query = @"
                         insert into dbo.Employee values
                         ('" + emp.EmployeeName + @"',
                         '" + emp.Department + @"',
-                        '" + emp.Date + @"',
+                        '" + emp.DateOfJoining + @"',
                         '" + emp.PhotoFileName + @"'
                         )
-                        ";
-                SqlCommand(query);
+                        ";*/
+                string query = "insert into dbo.Employee values (@Name,@Department,@Date,@Photoname)";
+                DataTable table = new DataTable();
+
+                using (var con = new SqlConnection(ConfigurationManager.
+                    ConnectionStrings["EmployeeAppDB"].ConnectionString))
+                    using (var cmd = new SqlCommand(query, con)) {
+                        cmd.Parameters.AddWithValue("@Name", SqlDbType.VarChar).Value = emp.EmployeeName;
+                        cmd.Parameters.AddWithValue("@Department", SqlDbType.VarChar).Value = emp.Department;
+                        cmd.Parameters.AddWithValue("@Date", SqlDbType.VarChar).Value = emp.DateOfJoining;
+                        cmd.Parameters.AddWithValue("@Photoname", SqlDbType.VarChar).Value = emp.PhotoFileName;
+                        using (var da = new SqlDataAdapter(cmd)) {
+                            cmd.CommandType = CommandType.Text;
+                            da.Fill(table);
+                        }
+                    }
                 return "Added Successfully!!";
             }
             catch (Exception) {
@@ -48,15 +62,21 @@ namespace BasicWebApp.Controllers
         public string Put(Employee emp) {
 
             try {
-                string query = @"
-                        update dbo.Employee set 
-                        EmployeeName='" + emp.EmployeeName + @"',
-                        Department='" + emp.Department + @"',
-                        DateOfJoining='" + emp.Date + @"',
-                        PhotoFileName='" + emp.PhotoFileName + @"'
-                        where EmployeeId=" + emp.EmployeeId + @"
-                        ";
-                SqlCommand(query);
+                string query = "update dbo.Employee set EmployeeName=@Name,Department=@Department,DateOfJoining=@Date,PhotoFileName=@Photowhere EmployeeId=@Id";
+                DataTable table = new DataTable();
+                using (var con = new SqlConnection(ConfigurationManager.
+                    ConnectionStrings["EmployeeAppDB"].ConnectionString))
+                    using (var cmd = new SqlCommand(query, con)) {
+                    cmd.Parameters.AddWithValue("@Id", SqlDbType.VarChar).Value = emp.EmployeeId;
+                    cmd.Parameters.AddWithValue("@Name", SqlDbType.VarChar).Value = emp.EmployeeName;
+                    cmd.Parameters.AddWithValue("@Department", SqlDbType.VarChar).Value = emp.Department;
+                    cmd.Parameters.AddWithValue("@Date", SqlDbType.VarChar).Value = emp.DateOfJoining;
+                    cmd.Parameters.AddWithValue("@Photoname", SqlDbType.VarChar).Value = emp.PhotoFileName;
+                        using (var da = new SqlDataAdapter(cmd)) {
+                            cmd.CommandType = CommandType.Text;
+                            da.Fill(table);
+                        }
+                    }
                 return "Updated Successfully!!";
             }
             catch (Exception e) {
@@ -72,7 +92,7 @@ namespace BasicWebApp.Controllers
                         delete from dbo.Employee
                         where EmployeeId=" + id + @"
                         ";
-                SqlCommand(query);
+                SqlQuery(query);
                 return "Deleted Successfully!!";
             }
             catch (Exception) {
@@ -80,7 +100,7 @@ namespace BasicWebApp.Controllers
                 return "Failed to delete!!";
             }
         }
-        private DataTable SqlCommand(string query) {
+        private DataTable SqlQuery(string query) {
             DataTable table = new DataTable();
 
             using (var con = new SqlConnection(ConfigurationManager.
@@ -96,8 +116,8 @@ namespace BasicWebApp.Controllers
         [HttpGet]
         public HttpResponseMessage GetAllDepartmentNames() {
             string query = @"select DepartmentName from dbo.Department";
-            SqlCommand(query);
-            return Request.CreateResponse(HttpStatusCode.OK, SqlCommand(query));
+            SqlQuery(query);
+            return Request.CreateResponse(HttpStatusCode.OK, SqlQuery(query));
         }
 
         [Route("api/Employee/SaveFile")]
