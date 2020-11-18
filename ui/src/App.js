@@ -14,7 +14,7 @@ function App() {
     
     <div className="App">
       <Navbar active={useLocation().pathname.replace('/','')}/>
-      <div>        
+      <div className="main">        
         <Switch>
           <Route exact path='/' component={ExampleComponent}/>
           <Route path='/Department' component={props =>

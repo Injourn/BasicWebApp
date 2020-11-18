@@ -35,10 +35,14 @@ class DepartmentForm extends React.Component{
     }
     render(){
         return(
-        <form onSubmit={this.handleSubmit}>
-            <label> What is the new department name? </label>
-            <input type="text" value={this.state.name} onChange={this.handleChange}></input>
-            <input type="submit" value="submit"/>
+        <form onSubmit={this.handleSubmit}>            
+            <div className="form-group">
+                <label>Department Name</label>
+                <input className = "input-control" type="text" value={this.state.name} onChange={this.handleChange}></input>
+            </div>
+            <div className="form-group">
+                <input type="submit" value="submit"/>            
+            </div>
         </form>)
     }
 }

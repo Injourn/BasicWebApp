@@ -8,6 +8,12 @@ html{
   background-color: #98A3B3;
 }
 
+
+.main{
+  margin: 0 auto;
+  padding: 3rem 2.5rem;
+  max-width: 90rem;
+}
 .nav {
   background-color: #2D3047;
   overflow: hidden;
@@ -34,9 +40,10 @@ html{
 .simpleTable{
   margin: 20px 0;
   table-layout: fixed;
-  width: 100%;
-  padding: 10px;
+  width: 100%;  
   border-collapse: collapse;
+  border-style: solid;
+  border-color: #2D3047;
 }
 .simpleTable thead{
   text-align: left;
@@ -68,7 +75,7 @@ html{
 .form-group label {
   flex: none;
   display: block;
-  width: 125px;
+  width: 150px;
   font-weight: bold;
   font-size: 1em;
 }
