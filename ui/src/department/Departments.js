@@ -26,7 +26,7 @@ class Departments extends React.Component{
                         <tr>
                             <th style={{width:"10%"}}>Department ID</th>
                             <th style={{width:"80%"}}>Department Name</th>
-                            
+                            <th style={{width:"10%"}}></th>
                         </tr>
                     </thead>
                     <tbody>

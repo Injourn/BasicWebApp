@@ -66,6 +66,10 @@ html{
   background-color: #f3eee2;
   color: #000000;
 }
+.simpleTable button{
+  padding: 2px 5px;
+}
+
 
 .form-group {
   display: flex;
