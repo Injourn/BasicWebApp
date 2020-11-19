@@ -5,14 +5,15 @@ class EmployeeList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            employee: []
+            employee: [],
+            loaded:false
         };
     }
     componentDidMount(){
         fetch('https://sghtest.azurewebsites.net/api/employee')
         .then(res => res.json())
         .then((data) => {
-            this.setState({employee: data})
+            this.setState({employee: data, loaded: true})
         })        
     }
     render(){
@@ -24,7 +25,8 @@ class EmployeeList extends React.Component{
                         <th>EmployeeId</th>
                         <th>EmployeeName</th>                 
                         <th>Department</th>
-                        <th>DateofJoining</th>                    
+                        <th>DateofJoining</th>
+                        <th></th>                   
                     </tr>
                 </thead>
                 <tbody>
