@@ -44,6 +44,7 @@ html{
   border-collapse: collapse;
   border-style: solid;
   border-color: #2D3047;
+  min-width: 986px;
 }
 .simpleTable thead{
   text-align: left;
@@ -67,7 +68,12 @@ html{
   color: #000000;
 }
 .simpleTable button{
-  padding: 2px 5px;
+  padding: 3px 7px;
+  border: solid;
+  background-color: #F96900;
+  color: #000000;
+  font-weight: bold;
+  float: left;
 }
 
 
