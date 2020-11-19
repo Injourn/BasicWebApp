@@ -62,7 +62,7 @@ namespace BasicWebApp.Controllers
         public string Put(Employee emp) {
 
             try {
-                string query = "update dbo.Employee set EmployeeName=@Name,Department=@Department,DateOfJoining=@Date,PhotoFileName=@Photowhere EmployeeId=@Id";
+                string query = "update dbo.Employee set EmployeeName=@Name,Department=@Department,DateOfJoining=@Date,PhotoFileName=@Photo where EmployeeId=@Id";
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.
                     ConnectionStrings["EmployeeAppDB"].ConnectionString))
@@ -71,7 +71,7 @@ namespace BasicWebApp.Controllers
                     cmd.Parameters.AddWithValue("@Name", SqlDbType.VarChar).Value = emp.EmployeeName;
                     cmd.Parameters.AddWithValue("@Department", SqlDbType.VarChar).Value = emp.Department;
                     cmd.Parameters.AddWithValue("@Date", SqlDbType.VarChar).Value = emp.DateOfJoining;
-                    cmd.Parameters.AddWithValue("@Photoname", SqlDbType.VarChar).Value = emp.PhotoFileName;
+                    cmd.Parameters.AddWithValue("@Photo", SqlDbType.VarChar).Value = emp.PhotoFileName;
                         using (var da = new SqlDataAdapter(cmd)) {
                             cmd.CommandType = CommandType.Text;
                             da.Fill(table);
