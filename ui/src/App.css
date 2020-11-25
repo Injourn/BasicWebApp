@@ -36,6 +36,45 @@ html{
   color: white;
 }
 
+.container{
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.box{
+  border: 5px solid #2D3047;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  background-color: #f3eee2;
+  margin: .5rem .3rem;
+}
+
+.box img{
+  max-width: 100%;
+}
+
+.employeeBox{
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  
+}
+
+
+.informationBox{
+  flex-grow: 1;
+  flex-shrink: 1;
+  
+  flex-basis: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
 
 .simpleTable{
   margin: 20px 0;

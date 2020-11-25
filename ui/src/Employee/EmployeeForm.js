@@ -9,7 +9,7 @@ class EmployeeForm extends React.Component{
             name: 'Name',
             department: 'department',
             date: Date.now,
-            picture: "image.txt"
+            picture: "image.png"
         };
 
         this.handleChange = this.handleChange.bind(this);

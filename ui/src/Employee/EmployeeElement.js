@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class EmployeeElement extends React.Component{
     constructor(props){
@@ -61,7 +62,7 @@ class EmployeeElement extends React.Component{
             return(
                 <tr className={this.props.secondary === 1 ? '' : 'altST'}>
                     <td>{this.props.employee.EmployeeId}</td>
-                    <td>{this.props.employee.EmployeeName}</td>
+                    <td><Link to={"/employees/" + this.props.employee.EmployeeId}>{this.props.employee.EmployeeName}</Link></td>
                     <td>{this.props.employee.Department}</td>
                     <td>{this.props.employee.DateOfJoining}</td>
                     <td><button onClick={() => {this.setState({editing:true});}}>Edit</button></td>
